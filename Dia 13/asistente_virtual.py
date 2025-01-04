@@ -7,6 +7,10 @@ import webbrowser
 import datetime
 import wikipedia
 
+id1 = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_ES-MX_SABINA_11.0'
+id2 = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_ZIRA_11.0'
+id3 = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_DAVID_11.0'
+
 #Escuchar nuestro microfono y devolver el audio como texto
 
 def transformar_audio_en_texto():
@@ -66,8 +70,30 @@ def hablar(mensaje):
     engine.say(mensaje)
     engine.runAndWait()
 
-id1 = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_ES-MX_SABINA_11.0'
-id2 = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_ZIRA_11.0'
-id3 = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_DAVID_11.0'
+def pedir_dia():
 
-hablar("Hola Luis. Espero que tengas un buen día")
+    #Crear variable con datos de hoy
+    dia = datetime.date.today()
+    print(dia)
+
+    #crear variable para el dia de la semana
+    dia_semana = dia.weekday()
+    print(dia_semana)
+
+    #diccionario con nombres de los dias de la semana
+    calendario = {
+        0: 'Lunes',
+        1: 'Martes',
+        2: 'Miércoles',
+        3: 'Jueves',
+        4: 'Viernes',
+        5: 'Sábado',
+        6: 'Domingo'
+    }
+
+    #decir el dia de la semana
+    hablar(f'Hoy es {calendario[dia_semana]}')
+
+pedir_dia()
+
+
